@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom CSS Variables ─── */
+:root {
+  --cream: #f5e6c8;
+  --coffee: #6b3a1f;
+  --gold: #c9a84c;
+  --warm-bg: #faf6f0;
+  --card-bg: #fff8f0;
+}
+
+/* ─── Base Styles ─── */
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--warm-bg);
+  color: var(--coffee);
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: #1a0f08;
+  color: #f5e6c8;
+}
+
+/* ─── Utility Classes ─── */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf3c8;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #2d1508;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #8b5e3c;
+}
+
+/* ─── Glass Morphism ─── */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.glass-dark {
+  background: rgba(26, 15, 8, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+/* ─── Section fade-in ─── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Gradient Text ─── */
+.text-gradient {
+  background: linear-gradient(135deg, #c9a84c 0%, #f5e6c8 50%, #c9a84c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-coffee {
+  background: linear-gradient(135deg, #6b3a1f 0%, #c47335 60%, #6b3a1f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Floating WhatsApp Button ─── */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+}
+
+/* ─── Steam Animation ─── */
+.steam-particle {
+  position: absolute;
+  width: 8px;
+  height: 30px;
+  border-radius: 50% 50% 0 0;
+  background: rgba(255,255,255,0.4);
+  filter: blur(4px);
+  animation: steam-rise 3s ease-in-out infinite;
+}
+
+@keyframes steam-rise {
+  0% { opacity: 0; transform: translateY(0) scaleX(1); }
+  30% { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(-80px) scaleX(2); }
+}
+
+/* ─── Coffee Bean Animation ─── */
+@keyframes float-bean {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(120deg); }
+  66% { transform: translateY(-8px) rotate(240deg); }
+}
+
+.coffee-bean {
+  animation: float-bean linear infinite;
+}
+
+/* ─── Menu Card Hover ─── */
+.menu-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.menu-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(107, 58, 31, 0.2);
+}
+.dark .menu-card:hover {
+  box-shadow: 0 20px 50px rgba(201, 168, 76, 0.15);
+}
+
+/* ─── Gallery Hover ─── */
+.gallery-item {
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.gallery-item img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-item:hover img {
+  transform: scale(1.12);
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,15,8,0.7) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ─── Lightbox ─── */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── Review Stars ─── */
+.star-filled { color: #f59e0b; }
+
+/* ─── Section Divider ─── */
+.section-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #c9a84c, transparent);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* ─── Button Styles ─── */
+.btn-primary {
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c87a 50%, #c9a84c 100%);
+  background-size: 200% auto;
+  color: #2d1508;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.4);
+}
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 168, 76, 0.6);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(245, 230, 200, 0.7);
+  color: #f5e6c8;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.btn-outline:hover {
+  background: rgba(245, 230, 200, 0.15);
+  border-color: #f5e6c8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 230, 200, 0.2);
+}
+
+/* ─── Dark mode card ─── */
+.dark .card-warm {
+  background: #2d1508;
+  border-color: rgba(201, 168, 76, 0.2);
+}
+
+/* ─── Parallax container ─── */
+.parallax-bg {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ─── Category Tab Active ─── */
+.tab-active {
+  background: linear-gradient(135deg, #c9a84c, #e8c87a);
+  color: #2d1508;
+  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.4);
+}
+
+/* ─── Testimonial Card ─── */
+.review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(107, 58, 31, 0.15);
+}
+.dark .review-card:hover {
+  box-shadow: 0 16px 40px rgba(201, 168, 76, 0.1);
+}
+
+/* ─── Click Ripple Animation ─── */
+@keyframes ripple {
+  0% { width: 0; height: 0; opacity: 0.5; transform: translate(-50%, -50%) scale(0); }
+  100% { width: 300px; height: 300px; opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ─── Menu card refined hover ─── */
+.menu-card-hover {
+  transition: box-shadow 0.35s ease;
+}
+
+/* ─── Input Focus Ring ─── */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  ring: none;
+}
+
+/* ─── Smooth page fade-in after preloader ─── */
+.page-enter {
+  animation: pageFadeIn 0.6s ease forwards;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Booking modal select arrow ─── */
+select option {
+  background: #fff8f0;
+  color: #6b3a1f;
+}
+.dark select option {
+  background: #2d1508;
+  color: #f5e6c8;
+}
+
+/* ─── Preloader body lock ─── */
+body.preloading {
+  overflow: hidden;
+}
+
+/* ─── Sticky CTA bar backdrop ─── */
+.sticky-cta-bar {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ─── Glow pulse ─── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
+  50% { box-shadow: 0 0 20px 8px rgba(201,168,76,0); }
+}
+.glow-pulse {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
