@@ -5,7 +5,7 @@ export const menuData = {
   Coffee: [
     { id: 'c1', name: 'Espresso', price: 100, description: 'Pure, bold, and unapologetically intense. A double shot of rich dark espresso.', image: 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&q=80' },
     { id: 'c2', name: 'Cappuccino', price: 120, description: 'Equal parts espresso, steamed milk, and velvety microfoam — a timeless classic.', image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80' },
-    { id: 'c3', name: 'Latte', price: 140, description: 'Silky smooth espresso melted into creamy steamed milk with beautiful latte art.', image: 'https://images.unsplash.com/photo-1485808191679-5f86510bd9a4?w=400&q=80' },
+    { id: 'c3', name: 'Latte', price: 140, description: 'Silky smooth espresso melted into creamy steamed milk with beautiful latte art.', image: '/latte.png' },
     { id: 'c4', name: 'Americano', price: 110, description: 'Espresso diluted with hot water for a bold, full-bodied cup without bitterness.', image: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?w=400&q=80' },
     { id: 'c5', name: 'Mocha', price: 160, description: 'Espresso meets Belgian chocolate syrup and creamy milk, topped with whipped cream.', image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&q=80' },
     { id: 'c6', name: 'Cold Coffee', price: 150, description: 'Chilled espresso blended with milk and ice — our house favourite.', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80', badge: '🔥 Most Loved' },

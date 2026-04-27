@@ -65,8 +65,8 @@ export default function About({ dark }) {
               className="absolute -top-6 -left-6 w-32 h-32 rounded-2xl overflow-hidden shadow-warm border-4 border-white dark:border-coffee-800"
             >
               <img
-                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&q=80"
-                alt="Artisan latte"
+                src="/latte.png"
+                alt="Artisan latte art"
                 className="w-full h-full object-cover"
               />
             </motion.div>
